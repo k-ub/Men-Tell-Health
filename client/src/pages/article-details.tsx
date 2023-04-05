@@ -18,7 +18,7 @@ function checkImage(url: any) {
     return img.width !== 0 && img.height !== 0;
 }
 
-const PropertyDetails = () => {
+const ArticleDetails = () => {
     const navigate = useNavigate();
     const { data: user } = useGetIdentity({
         v3LegacyAuthProviderCompatible: true,
@@ -29,7 +29,7 @@ const PropertyDetails = () => {
 
     const { data, isLoading, isError } = queryResult;
 
-    const propertyDetails = data?.data ?? {};
+    const articleDetails = data?.data ?? {};
 
     if (isLoading) {
         return <div>Loading...</div>;
@@ -39,21 +39,21 @@ const PropertyDetails = () => {
         return <div>Something went wrong!</div>;
     }
 
-    const isCurrentUser = user.email === propertyDetails.creator.email;
+    const isCurrentUser = user.email === articleDetails.creator.email;
 
-    const handleDeleteProperty = () => {
+    const handleDeleteArticle = () => {
         const response = confirm(
-            "Are you sure you want to delete this property?",
+            "Are you sure you want to delete this article?",
         );
         if (response) {
             mutate(
                 {
-                    resource: "properties",
+                    resource: "articles",
                     id: id as string,
                 },
                 {
                     onSuccess: () => {
-                        navigate("/properties");
+                        navigate("/articles");
                     },
                 },
             );
@@ -79,11 +79,11 @@ const PropertyDetails = () => {
             >
                 <Box flex={1} maxWidth={764}>
                     <img
-                        src={propertyDetails.photo}
-                        alt="property_details-img"
+                        src={articleDetails.photo}
+                        alt="article_details-img"
                         height={546}
                         style={{ objectFit: "cover", borderRadius: "10px" }}
-                        className="property_details-img"
+                        className="article_details-img"
                     />
 
                     <Box mt="15px">
@@ -99,7 +99,7 @@ const PropertyDetails = () => {
                                 color="#11142D"
                                 textTransform="capitalize"
                             >
-                                {propertyDetails.propertyType}
+                                {articleDetails.articleType}
                             </Typography>
                             <Box>
                                 {[1, 2, 3, 4, 5].map((item) => (
@@ -125,7 +125,7 @@ const PropertyDetails = () => {
                                     mt="10px"
                                     color="#11142D"
                                 >
-                                    {propertyDetails.title}
+                                    {articleDetails.title}
                                 </Typography>
                                 <Stack
                                     mt={0.5}
@@ -135,7 +135,7 @@ const PropertyDetails = () => {
                                 >
                                     <Place sx={{ color: "#808191" }} />
                                     <Typography fontSize={14} color="#808191">
-                                        {propertyDetails.location}
+                                        {articleDetails.location}
                                     </Typography>
                                 </Stack>
                             </Box>
@@ -159,7 +159,7 @@ const PropertyDetails = () => {
                                         fontWeight={700}
                                         color="#475BE8"
                                     >
-                                        ${propertyDetails.price}
+                                        ${articleDetails.price}
                                     </Typography>
                                     <Typography
                                         fontSize={14}
@@ -177,7 +177,7 @@ const PropertyDetails = () => {
                                 Description
                             </Typography>
                             <Typography fontSize={14} color="#808191">
-                                {propertyDetails.description}
+                                {articleDetails.description}
                             </Typography>
                         </Stack>
                     </Box>
@@ -208,8 +208,8 @@ const PropertyDetails = () => {
                         >
                             <img
                                 src={
-                                    checkImage(propertyDetails.creator.avatar)
-                                        ? propertyDetails.creator.avatar
+                                    checkImage(articleDetails.creator.avatar)
+                                        ? articleDetails.creator.avatar
                                         : "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/2048px-User-avatar.svg.png"
                                 }
                                 alt="avatar"
@@ -227,7 +227,7 @@ const PropertyDetails = () => {
                                     fontWeight={600}
                                     color="#11142D"
                                 >
-                                    {propertyDetails.creator.name}
+                                    {articleDetails.creator.name}
                                 </Typography>
                                 <Typography
                                     mt="5px"
@@ -261,7 +261,7 @@ const PropertyDetails = () => {
                                 fontWeight={600}
                                 color="#11142D"
                             >
-                                {propertyDetails.creator.allProperties.length}{" "}
+                                {articleDetails.creator.allArticles.length}{" "}
                                 Artice Posts
                             </Typography>
                         </Stack>
@@ -284,7 +284,7 @@ const PropertyDetails = () => {
                                 handleClick={() => {
                                     if (isCurrentUser) {
                                         navigate(
-                                            `/properties/edit/${propertyDetails._id}`,
+                                            `/articles/edit/${articleDetails._id}`,
                                         );
                                     }
                                 }}
@@ -298,7 +298,7 @@ const PropertyDetails = () => {
                                 fullWidth
                                 icon={!isCurrentUser ? <Phone /> : <Delete />}
                                 handleClick={() => {
-                                    if (isCurrentUser) handleDeleteProperty();
+                                    if (isCurrentUser) handleDeleteArticle();
                                 }}
                             />
                         </Stack>
@@ -327,4 +327,4 @@ const PropertyDetails = () => {
     );
 };
 
-export default PropertyDetails;
+export default ArticleDetails;

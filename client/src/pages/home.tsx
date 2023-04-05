@@ -2,12 +2,12 @@ import { useList } from "@refinedev/core";
 import { Typography, Box } from "@mui/material";
 
 import {
-    PropertyCard,
+    ArticleCard,
 } from "components";
 
 const Home = () => {
     const { data, isLoading, isError } = useList({
-        resource: "properties",
+        resource: "articles",
         config: {
             pagination: {
                 pageSize: 4,
@@ -15,7 +15,7 @@ const Home = () => {
         },
     });
 
-    const latestProperties = data?.data ?? [];
+    const latestArticles = data?.data ?? [];
 
     if (isLoading) return <Typography>Loading...</Typography>;
     if (isError) return <Typography>Something went wrong!</Typography>;
@@ -28,13 +28,13 @@ const Home = () => {
 
             {/* <Box mt="20px" display="flex" flexWrap="wrap" gap={4}>
                 <PieChart
-                    title="Properties for Sale"
+                    title="Articles for Sale"
                     value={684}
                     series={[75, 25]}
                     colors={["#275be8", "#c4e8ef"]}
                 />
                 <PieChart
-                    title="Properties for Rent"
+                    title="Articles for Rent"
                     value={550}
                     series={[60, 40]}
                     colors={["#275be8", "#c4e8ef"]}
@@ -46,7 +46,7 @@ const Home = () => {
                     colors={["#275be8", "#c4e8ef"]}
                 />
                 <PieChart
-                    title="Properties for Cities"
+                    title="Articles for Cities"
                     value={555}
                     series={[75, 25]}
                     colors={["#275be8", "#c4e8ef"]}
@@ -60,7 +60,7 @@ const Home = () => {
                 gap={4}
             >
                 <TotalRevenue />
-                <PropertyReferrals />
+                <ArticleReferrals />
             </Stack> */}
 
             <Box
@@ -81,14 +81,14 @@ const Home = () => {
                     mt={2.5}
                     sx={{ display: "flex", flexWrap: "wrap", gap: 4 }}
                 >
-                    {latestProperties.map((property) => (
-                        <PropertyCard
-                            key={property._id}
-                            id={property._id}
-                            title={property.title}
-                            location={property.location}
-                            price={property.price}
-                            photo={property.photo}
+                    {latestArticles.map((article) => (
+                        <ArticleCard
+                            key={article._id}
+                            id={article._id}
+                            title={article.title}
+                            location={article.location}
+                            price={article.price}
+                            photo={article.photo}
                         />
                     ))}
                 </Box>

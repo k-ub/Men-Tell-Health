@@ -21,7 +21,7 @@ const Form = ({
   handleImageChange,
   formLoading,
   onFinishHandler,
-  propertyImage,
+  articleImage,
 }: FormProps) => {
   return (
       <Box>
@@ -108,7 +108,7 @@ const Form = ({
                               required
                               inputProps={{ "aria-label": "Without label" }}
                               defaultValue="apartment"
-                              {...register("propertyType", {
+                              {...register("articleType", {
                                   required: true,
                               })}
                           >
@@ -204,7 +204,7 @@ const Form = ({
                           color="#808191"
                           sx={{ wordBreak: "break-all" }}
                       >
-                          {propertyImage?.name}
+                          {articleImage?.name}
                       </Typography>
                   </Stack>
 

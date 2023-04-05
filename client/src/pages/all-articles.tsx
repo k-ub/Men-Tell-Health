@@ -11,9 +11,9 @@ import {
 import { useNavigate } from "react-router-dom";
 import { useMemo } from "react";
 
-import { PropertyCard, CustomButton } from "components";
+import { ArticleCard, CustomButton } from "components";
 
-const AllProperties = () => {
+const AllArticles = () => {
     const navigate = useNavigate();
 
     const {
@@ -28,7 +28,7 @@ const AllProperties = () => {
         setFilters,
     } = useTable();
 
-    const allProperties = data?.data ?? [];
+    const allArticles = data?.data ?? [];
 
     const currentPrice = sorter.find((item) => item.field === "price")?.order;
 
@@ -45,8 +45,8 @@ const AllProperties = () => {
             title:
                 logicalFilters.find((item) => item.field === "title")?.value ||
                 "",
-            propertyType:
-                logicalFilters.find((item) => item.field === "propertyType")
+            articleType:
+                logicalFilters.find((item) => item.field === "articleType")
                     ?.value || "",
         };
     }, [filters]);
@@ -59,7 +59,7 @@ const AllProperties = () => {
             <Box mt="20px" sx={{ display: "flex", flexWrap: "wrap", gap: 3 }}>
                 <Stack direction="column" width="100%">
                     <Typography fontSize={25} fontWeight={700} color="#11142d">
-                        {!allProperties.length
+                        {!allArticles.length
                             ? "There are no post"
                             : "All Post"}
                     </Typography>
@@ -109,12 +109,12 @@ const AllProperties = () => {
                                 required
                                 inputProps={{ "aria-label": "Without label" }}
                                 defaultValue=""
-                                value={currentFilterValues.propertyType}
+                                value={currentFilterValues.articleType}
                                 onChange={(e) => {
                                     setFilters(
                                         [
                                             {
-                                                field: "propertyType",
+                                                field: "articleType",
                                                 operator: "eq",
                                                 value: e.target.value,
                                             },
@@ -154,7 +154,7 @@ const AllProperties = () => {
             >
                 <CustomButton
                     title="Add Post"
-                    handleClick={() => navigate("/properties/create")}
+                    handleClick={() => navigate("/articles/create")}
                     backgroundColor="#475be8"
                     color="#fcfcfc"
                     icon={<Add />}
@@ -162,19 +162,19 @@ const AllProperties = () => {
             </Stack>
 
             <Box mt="20px" sx={{ display: "flex", flexWrap: "wrap", gap: 3 }}>
-                {allProperties?.map((property) => (
-                    <PropertyCard
-                        key={property._id}
-                        id={property._id}
-                        title={property.title}
-                        location={property.location}
-                        price={property.price}
-                        photo={property.photo}
+                {allArticles?.map((article) => (
+                    <ArticleCard
+                        key={article._id}
+                        id={article._id}
+                        title={article.title}
+                        location={article.location}
+                        price={article.price}
+                        photo={article.photo}
                     />
                 ))}
             </Box>
 
-            {allProperties.length > 0 && (
+            {allArticles.length > 0 && (
                 <Box display="flex" gap={2} mt={3} flexWrap="wrap">
                     <CustomButton
                         title="Previous"
@@ -225,4 +225,4 @@ const AllProperties = () => {
     );
 };
 
-export default AllProperties;
+export default AllArticles;

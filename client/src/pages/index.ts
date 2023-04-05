@@ -1,21 +1,21 @@
 import AgentProfile from "./agent-profile";
 import Agents from "./agent";
-import AllProperties from "./all-properties";
-import CreateProperty from "./create-property";
+import AllArticles from "./all-articles";
+import CreateArticle from "./create-article";
 import Home from "./home";
 import { Login } from "./login";
 import MyProfile from "./my-profile";
-import PropertyDetails from "./property-details";
-import EditProperty from "./edit-property";
+import ArticleDetails from "./article-details";
+import EditArticle from "./edit-article";
 
 export {
     AgentProfile,
     Agents,
-    AllProperties,
-    CreateProperty,
+    AllArticles,
+    CreateArticle,
     Home,
     Login,
     MyProfile,
-    PropertyDetails,
-    EditProperty,
+    ArticleDetails,
+    EditArticle,
 };

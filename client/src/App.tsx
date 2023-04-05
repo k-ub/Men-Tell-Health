@@ -33,11 +33,11 @@ import {
     Home,
     Agents,
     MyProfile,
-    PropertyDetails,
-    AllProperties,
-    CreateProperty,
+    ArticleDetails,
+    AllArticles,
+    CreateArticle,
     AgentProfile,
-    EditProperty,
+    EditArticle,
 } from "pages";
 
 const axiosInstance = axios.create();
@@ -138,15 +138,15 @@ function App() {
                     catchAll={<ErrorComponent />}
                     resources={[
                         {
-                            name: "properties",
-                            list: AllProperties,
-                            show: PropertyDetails,
-                            create: CreateProperty,
-                            edit: EditProperty,
+                            name: "articles",
+                            list: AllArticles,
+                            show: ArticleDetails,
+                            create: CreateArticle,
+                            edit: EditArticle,
                             icon: <VillaOutlined />,
                         },
                         {
-                            name: "members",
+                            name: "agents",
                             list: Agents,
                             show: AgentProfile,
                             icon: <PeopleAltOutlined />,

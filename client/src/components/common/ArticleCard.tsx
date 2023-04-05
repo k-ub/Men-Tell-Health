@@ -9,19 +9,19 @@ import {
     Stack,
 } from "@mui/material";
 
-import { PropertyCardProps } from "interfaces/property";
+import { ArticleCardProps } from "interfaces/article";
 
-const PropertyCard = ({
+const ArticleCard = ({
     id,
     title,
     location,
     price,
     photo,
-}: PropertyCardProps) => {
+}: ArticleCardProps) => {
     return (
         <Card
             component={Link}
-            to={`/properties/show/${id}`}
+            to={`/articles/show/${id}`}
             sx={{
                 maxWidth: "330px",
                 padding: "10px",
@@ -82,4 +82,4 @@ const PropertyCard = ({
     );
 };
 
-export default PropertyCard;
+export default ArticleCard;

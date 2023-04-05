@@ -33,7 +33,7 @@ const Agents = () => {
                         name={agent.name}
                         email={agent.email}
                         avatar={agent.avatar}
-                        noOfProperties={agent.allProperties.length}
+                        noOfArticles={agent.allArticles.length}
                     />
                 ))}
             </Box>

@@ -14,10 +14,10 @@ export interface ProfileProps {
     name: string,
     avatar: string,
     email: string,
-    properties: Array | undefined
+    articles: Array | undefined
 }
 
-export interface PropertyProps {
+export interface ArticleProps {
     _id: string,
     title: string,
     description: string,
@@ -35,5 +35,5 @@ export interface FormProps {
     handleSubmit: FormEventHandler<HTMLFormElement> | undefined,
     handleImageChange: (file) => void,
     onFinishHandler: (data: FieldValues) => Promise<void> | void,
-    propertyImage: { name: string, url: string },
+    articleImage: { name: string, url: string },
 }
