@@ -140,7 +140,7 @@ const Form = ({
                       </FormControl>
                   </Stack>
 
-                  {/* <FormControl>
+                  <FormControl>
                       <FormHelperText
                           sx={{
                               fontWeight: 500,
@@ -159,7 +159,7 @@ const Form = ({
                           variant="outlined"
                           {...register("location", { required: true })}
                       />
-                  </FormControl> */}
+                  </FormControl>
 
                   <Stack
                       direction="column"
