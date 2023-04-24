@@ -125,14 +125,9 @@ const AllArticles = () => {
                             >
                                 <MenuItem value="">All</MenuItem>
                                 {[
-                                    "Apartment",
-                                    "Villa",
-                                    "Farmhouse",
-                                    "Condos",
-                                    "Townhouse",
-                                    "Duplex",
-                                    "Studio",
-                                    "Chalet",
+                                    "Finance",
+                                    "Tech",
+                                    "Gym" 
                                 ].map((type) => (
                                     <MenuItem
                                         key={type}

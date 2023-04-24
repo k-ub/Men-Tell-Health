@@ -1,7 +1,4 @@
-import React from "react";
-
 import {
-    GitHubBanner,
     Refine,
     LegacyAuthProvider as AuthProvider,
 } from "@refinedev/core";
@@ -22,7 +19,7 @@ import {
 
 import dataProvider from "@refinedev/simple-rest";
 import routerProvider from "@refinedev/react-router-v6/legacy";
-import axios, { AxiosRequestConfig } from "axios";
+import { AxiosRequestConfig, InternalAxiosRequestConfig } from "axios";
 import { Title, Sider, Layout, Header } from "components/layout";
 import { ColorModeContextProvider } from "contexts/color-mode";
 import { CredentialResponse } from "interfaces/google";
@@ -40,19 +37,27 @@ import {
     EditArticle,
 } from "pages";
 
-const axiosInstance = axios.create();
-axiosInstance.interceptors.request.use((request: AxiosRequestConfig) => {
-    const token = localStorage.getItem("token");
-    if (request.headers) {
-        request.headers["Authorization"] = `Bearer ${token}`;
-    } else {
-        request.headers = {
-            Authorization: `Bearer ${token}`,
-        };
-    }
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import axios from 'axios';
 
-    return request;
+import CategoryList from 'pages/CategoryList';
+import BlogChatList from 'pages/BlogChatList';
+import GroupChat from 'pages/GroupChat';
+import CreateEvent from "pages/CreateEvent";
+
+
+const axiosInstance = axios.create({
+    headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
 });
+
+interface Category {
+    _id: string;
+    name: string;
+  }
+  
 
 function App() {
     const authProvider: AuthProvider = {
@@ -92,15 +97,17 @@ function App() {
 
             return Promise.resolve();
         },
-        logout: () => {
+        logout: async () => {
             const token = localStorage.getItem("token");
 
             if (token && typeof window !== "undefined") {
                 localStorage.removeItem("token");
                 localStorage.removeItem("user");
                 axios.defaults.headers.common = {};
-                window.google?.accounts.id.revoke(token, () => {
-                    return Promise.resolve();
+                return new Promise<void>((resolve) => {
+                    window.google?.accounts.id.revoke(token, () => {
+                        resolve();
+                    });
                 });
             }
 
@@ -127,11 +134,10 @@ function App() {
 
     return (
         <ColorModeContextProvider>
-            <GitHubBanner />
             <CssBaseline />
             <GlobalStyles styles={{ html: { WebkitFontSmoothing: "auto" } }} />
             <RefineSnackbarProvider>
-                <Refine
+            <Refine
                     dataProvider={dataProvider("http://localhost:8080/api/v1")}
                     notificationProvider={notificationProvider}
                     ReadyPage={ReadyPage}
@@ -153,12 +159,13 @@ function App() {
                         },
                         {
                             name: "events",
-                            list: Home,
+                            list: CreateEvent,
                             icon: <StarOutlineRounded />,
                         },
                         {
                             name: "discussion",
-                            list: Home,
+                            list: BlogChatList,
+                            show: GroupChat,
                             icon: <ChatBubbleOutline />,
                         },
                         {
@@ -183,3 +190,4 @@ function App() {
 }
 
 export default App;
+

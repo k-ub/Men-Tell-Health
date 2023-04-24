@@ -42,7 +42,7 @@ const ArticleDetails = () => {
     const isCurrentUser = user.email === articleDetails.creator.email;
 
     const handleDeleteArticle = () => {
-        const response = confirm(
+        const response = window.confirm(
             "Are you sure you want to delete this article?",
         );
         if (response) {
