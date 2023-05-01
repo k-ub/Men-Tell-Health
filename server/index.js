@@ -5,6 +5,8 @@ import cors from "cors";
 import connectDB from "./mongodb/connect.js";
 import userRouter from "./routes/user.routes.js";
 import articleRouter from "./routes/article.routes.js";
+import eventRouter from "./routes/event.routes.js";
+import groupChatRouter from "./routes/groupchat.routes.js";
 
 dotenv.config();
 
@@ -18,6 +20,8 @@ app.get("/", (req, res) => {
 
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/articles", articleRouter);
+app.use("/api/v1/events", eventRouter);
+app.use("/api/v1/groupchats", groupChatRouter);
 
 const startServer = async () => {
     try {

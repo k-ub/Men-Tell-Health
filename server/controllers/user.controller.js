@@ -30,6 +30,27 @@ const createUser = async (req, res) => {
     }
 };
 
+const updateUser = async (req, res) => {
+    try {
+      const { id } = req.params;
+      const { name, email, avatar } = req.body;
+  
+      const updatedUser = await User.findOneAndUpdate(
+        { _id: id },
+        { name, email, avatar },
+        { new: true }
+      );
+  
+      if (updatedUser) {
+        res.status(200).json(updatedUser);
+      } else {
+        res.status(404).json({ message: "User not found" });
+      }
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  };  
+
 const getUserInfoByID = async (req, res) => {
     try {
         const { id } = req.params;
@@ -46,4 +67,4 @@ const getUserInfoByID = async (req, res) => {
     }
 };
 
-export { getAllUsers, createUser, getUserInfoByID };
+export { getAllUsers, createUser, getUserInfoByID, updateUser };

@@ -5,8 +5,10 @@ const UserSchema = new mongoose.Schema({
     email: { type: String, required: true },
     avatar: { type: String, required: true },
     allArticles: [{ type: mongoose.Schema.Types.ObjectId, ref: "Article" }],
-});
-
-const userModel = mongoose.model("User", UserSchema);
-
-export default userModel;
+    events: [{ type: mongoose.Schema.Types.ObjectId, ref: "Event" }],
+  });
+  
+  const userModel = mongoose.model("User", UserSchema);
+  
+  export default userModel;
+  

@@ -188,15 +188,16 @@ const Form = ({
                           >
                               Upload *
                               <input
-                                  hidden
-                                  accept="image/*"
-                                  type="file"
-                                  onChange={(
-                                      e: React.ChangeEvent<HTMLInputElement>,
-                                  ) => {
-                                      handleImageChange(e.target.files![0]);
-                                  }}
-                              />
+  hidden
+  accept="image/*"
+  type="file"
+  onChange={(
+    e: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    handleImageChange?.(e.target.files![0]); // Add the optional chaining operator here
+  }}
+/>
+
                           </Button>
                       </Stack>
                       <Typography

@@ -28,12 +28,20 @@ export interface ArticleProps {
 }
 
 export interface FormProps {
-    type: string,
-    register: any,
-    onFinish: (values: FieldValues) => Promise<void | CreateResponse<BaseRecord> | UpdateResponse<BaseRecord>>,
-    formLoading: boolean,
-    handleSubmit: FormEventHandler<HTMLFormElement> | undefined,
-    handleImageChange: (file) => void,
-    onFinishHandler: (data: FieldValues) => Promise<void> | void,
-    articleImage: { name: string, url: string },
-}
+    type: string;
+    register: UseFormRegister<FieldValues>;
+    onFinish: (values: FieldValues) => Promise<void | CreateResponse<BaseRecord> | UpdateResponse<BaseRecord>>;
+    formLoading: boolean;
+    handleSubmit: UseFormHandleSubmit<FieldValues>;
+    onFinishHandler: (data: FieldValues) => Promise<void>;
+    handleImageChange?: (file: File) => void; // Make this optional with a '?'
+    articleImage?: { name: string; url: string }; // Make this optional with a '?'
+  }
+  export interface BaseFormProps<T> {
+    type: string; // <-- Add this line
+    handleSubmit: (data: T) => Promise<void>;
+    formLoading: boolean;
+    onFinishHandler: () => void;
+  }
+  
+

@@ -25,6 +25,10 @@ import { ColorModeContextProvider } from "contexts/color-mode";
 import { CredentialResponse } from "interfaces/google";
 import { parseJwt } from "utils/parse-jwt";
 
+
+import GroupChat from "pages/GroupChat";
+import GroupChatList from "pages/GroupChatList";
+
 import {
     Login,
     Home,
@@ -35,15 +39,13 @@ import {
     CreateArticle,
     AgentProfile,
     EditArticle,
+    CreateGroupChat
 } from "pages";
 
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import axios from 'axios';
 
-import CategoryList from 'pages/CategoryList';
-import BlogChatList from 'pages/BlogChatList';
-import GroupChat from 'pages/GroupChat';
 import CreateEvent from "pages/CreateEvent";
 
 
@@ -163,11 +165,13 @@ function App() {
                             icon: <StarOutlineRounded />,
                         },
                         {
-                            name: "discussion",
-                            list: BlogChatList,
+                            name: "groupchats",
+                            list: GroupChatList,
                             show: GroupChat,
+                            create: CreateGroupChat,
+                          
                             icon: <ChatBubbleOutline />,
-                        },
+                          },
                         {
                             name: "my-profile",
                             options: { label: "My Profile " },

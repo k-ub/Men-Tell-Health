@@ -1,27 +1,23 @@
-import { Place } from "@mui/icons-material";
+import { Chat } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import {
     Typography,
     Box,
     Card,
-    CardMedia,
     CardContent,
     Stack,
 } from "@mui/material";
 
-import { ArticleCardProps } from "interfaces/article";
+import { GroupCardProps } from "interfaces/groupchat"
 
-const ArticleCard = ({
-    id,
-    title,
-    location,
-    price,
-    photo,
-}: ArticleCardProps) => {
+ const GroupCard = ({ 
+    id, 
+    name 
+}: GroupCardProps) => {
     return (
         <Card
             component={Link}
-            to={`/articles/show/${id}`}
+            to={`/groupchats/show/${id}`}
             sx={{
                 maxWidth: "330px",
                 padding: "10px",
@@ -32,14 +28,6 @@ const ArticleCard = ({
             }}
             elevation={0}
         >
-            <CardMedia
-                component="img"
-                width="100%"
-                height={210}
-                image={photo}
-                alt="card image"
-                sx={{ borderRadius: "10px" }}
-            />
             <CardContent
                 sx={{
                     display: "flex",
@@ -51,10 +39,10 @@ const ArticleCard = ({
             >
                 <Stack direction="column" gap={1}>
                     <Typography fontSize={16} fontWeight={500} color="#11142d">
-                        {title}
+                        {name}
                     </Typography>
                     <Stack direction="row" gap={0.5} alignItems="flex-start">
-                        <Place
+                        <Chat
                             sx={{
                                 fontSize: 18,
                                 color: "#11142d",
@@ -62,24 +50,13 @@ const ArticleCard = ({
                             }}
                         />
                         <Typography fontSize={14} color="#808191">
-                            {location}
+                            Group Chat
                         </Typography>
                     </Stack>
                 </Stack>
-                <Box
-    px={1.5}
-    py={0.5}
-    borderRadius={1}
-    bgcolor="#dadefa"
-    height="fit-content"
->
-    <Typography fontSize={12} fontWeight={600} color="#475be8">
-        ${price}
-    </Typography>
-</Box>
             </CardContent>
         </Card>
     );
 };
 
-export default ArticleCard;
+export default GroupCard;
