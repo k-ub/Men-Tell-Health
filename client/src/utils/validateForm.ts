@@ -28,15 +28,15 @@ export const validateForm = (formValues: FormValues) => {
         }
         break;
 
-      case 'location':
-        if (!formValues.location) {
-          errors.message = 'Location is required';
-          hasError = true;
-        }
-        break;
+      // case 'location':
+      //   if (!formValues.location) {
+      //     errors.message = 'Location is required';
+      //     hasError = true;
+      //   }
+      //   break;
 
-      default:
-        hasError = false;
+      // default:
+      //   hasError = false;
     }
   });
 

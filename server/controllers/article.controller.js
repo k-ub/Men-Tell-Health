@@ -55,7 +55,7 @@ const getArticleDetail = async (req, res) => {
 
 const createArticle = async (req, res) => {
   try {
-    const { title, description, articleType, location, price, photo, email } = req.body;
+    const { title, description, articleType, price, photo, email } = req.body;
 
     const session = await mongoose.startSession();
     session.startTransaction();
@@ -70,7 +70,6 @@ const createArticle = async (req, res) => {
       title,
       description,
       articleType,
-      location,
       price,
       photo: photoUrl.url,
       creator: user._id,
@@ -90,7 +89,7 @@ const createArticle = async (req, res) => {
 const updateArticle = async (req, res) => {
   try {
     const { id } = req.params;
-    const { title, description, articleType, location, price, photo } = req.body;
+    const { title, description, articleType, price, photo } = req.body;
 
     const photoUrl = await cloudinary.uploader.upload(photo);
 
@@ -98,7 +97,6 @@ const updateArticle = async (req, res) => {
       title,
       description,
       articleType,
-      location,
       price,
       photo: photoUrl.url || photo,
     });

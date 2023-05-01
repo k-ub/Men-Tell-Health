@@ -102,10 +102,7 @@ const AgentCard = ({
                         icon={<Place sx={{ color: "#808191" }} />}
                         name="USA"
                     />
-                    <InfoBar
-                        icon={<Phone sx={{ color: "#808191" }} />}
-                        name="+502-3231-4141"
-                    />
+                    
                     {/* <InfoBar
                         icon={<LocationCity sx={{ color: "#808191" }} />}
                         name={`${noOfArticles} Articles`}

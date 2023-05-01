@@ -21,7 +21,7 @@ export interface ArticleProps {
     _id: string,
     title: string,
     description: string,
-    location: string,
+    // location: string,
     price: string,
     photo: string,
     creator: string

@@ -9,14 +9,14 @@ export interface FormValues {
     title: string,
     description: string,
     articleType: string,
-    location: string,
+    // location: string,
     price: number | undefined,
 }
 
 export interface ArticleCardProps {
   id?: BaseKey | undefined,
   title: string,
-  location: string,
+  // location: string,
   price: string,
   photo: string,
 }

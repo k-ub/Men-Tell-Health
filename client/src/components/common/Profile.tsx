@@ -1,4 +1,4 @@
-import { Email, Phone, Place } from "@mui/icons-material";
+import { Email, Place } from "@mui/icons-material";
 import { Box, Stack, Typography } from "@mui/material";
 
 import { ProfileProps, ArticleProps } from "interfaces/common";
@@ -83,7 +83,7 @@ const Profile = ({ type, name, avatar, email, articles }: ProfileProps) => (
                                         fontWeight={500}
                                         color="#808191"
                                     >
-                                        Address
+                                        
                                     </Typography>
                                     <Box
                                         display="flex"
@@ -91,13 +91,12 @@ const Profile = ({ type, name, avatar, email, articles }: ProfileProps) => (
                                         alignItems="center"
                                         gap="10px"
                                     >
-                                        <Place sx={{ color: "#11142D" }} />
+                                        {/* <Place sx={{ color: "#11142D" }} /> */}
                                         <Typography
                                             fontSize={14}
                                             color="#11142D"
                                         >
-                                            4517 Washington Ave. Manchaster,
-                                            Kentucky 39495
+                                           
                                         </Typography>
                                     </Box>
                                 </Stack>
@@ -114,7 +113,7 @@ const Profile = ({ type, name, avatar, email, articles }: ProfileProps) => (
                                             fontWeight={500}
                                             color="#808191"
                                         >
-                                            Phone Number
+                                            
                                         </Typography>
                                         <Box
                                             display="flex"
@@ -122,13 +121,12 @@ const Profile = ({ type, name, avatar, email, articles }: ProfileProps) => (
                                             alignItems="center"
                                             gap="10px"
                                         >
-                                            <Phone sx={{ color: "#11142D" }} />
                                             <Typography
                                                 fontSize={14}
                                                 color="#11142D"
                                                 noWrap
                                             >
-                                                +0123 456 7890
+                                                
                                             </Typography>
                                         </Box>
                                     </Stack>
@@ -183,7 +181,7 @@ const Profile = ({ type, name, avatar, email, articles }: ProfileProps) => (
                             key={article._id}
                             id={article._id}
                             title={article.title}
-                            location={article.location}
+                            // location={article.location}
                             price={article.price}
                             photo={article.photo}
                         />

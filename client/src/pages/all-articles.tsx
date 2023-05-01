@@ -30,10 +30,10 @@ const AllArticles = () => {
 
     const allArticles = data?.data ?? [];
 
-    const currentPrice = sorter.find((item) => item.field === "price")?.order;
+    const currentprice = sorter.find((item) => item.field === "price")?.order;
 
     const toggleSort = (field: string) => {
-        setSorter([{ field, order: currentPrice === "asc" ? "desc" : "asc" }]);
+        setSorter([{ field, order: currentprice === "asc" ? "desc" : "asc" }]);
     };
 
     const currentFilterValues = useMemo(() => {
@@ -78,8 +78,8 @@ const AllArticles = () => {
                             mb={{ xs: "20px", sm: 0 }}
                         >
                             <CustomButton
-                                title={`Sort price ${
-                                    currentPrice === "asc" ? "↑" : "↓"
+                                title={`Sort rating ${
+                                    currentprice === "asc" ? "↑" : "↓"
                                 }`}
                                 handleClick={() => toggleSort("price")}
                                 backgroundColor="#475be8"
@@ -162,7 +162,7 @@ const AllArticles = () => {
                         key={article._id}
                         id={article._id}
                         title={article.title}
-                        location={article.location}
+                        // location={article.location}
                         price={article.price}
                         photo={article.photo}
                     />

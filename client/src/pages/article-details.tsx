@@ -133,10 +133,7 @@ const ArticleDetails = () => {
                                     alignItems="center"
                                     gap={0.5}
                                 >
-                                    <Place sx={{ color: "#808191" }} />
-                                    <Typography fontSize={14} color="#808191">
-                                        {articleDetails.location}
-                                    </Typography>
+                                  
                                 </Stack>
                             </Box>
 
@@ -147,7 +144,7 @@ const ArticleDetails = () => {
                                     mt="10px"
                                     color="#11142D"
                                 >
-                                    Price
+                                    price
                                 </Typography>
                                 <Stack
                                     direction="row"

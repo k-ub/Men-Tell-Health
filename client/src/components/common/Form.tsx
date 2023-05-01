@@ -126,7 +126,7 @@ const Form = ({
                                   color: "#11142d",
                               }}
                           >
-                              Enter post value
+                              Enter post rating
                           </FormHelperText>
                           <TextField
                               fullWidth
@@ -141,7 +141,7 @@ const Form = ({
                   </Stack>
 
                   <FormControl>
-                      <FormHelperText
+                      {/* <FormHelperText
                           sx={{
                               fontWeight: 500,
                               margin: "10px 0",
@@ -150,15 +150,15 @@ const Form = ({
                           }}
                       >
                           Enter Location
-                      </FormHelperText>
-                      <TextField
+                      </FormHelperText> */}
+                      {/* <TextField
                           fullWidth
                           required
                           id="outlined-basic"
                           color="info"
                           variant="outlined"
                           {...register("location", { required: true })}
-                      />
+                      /> */}
                   </FormControl>
 
                   <Stack

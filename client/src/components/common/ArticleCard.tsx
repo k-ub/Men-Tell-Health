@@ -14,7 +14,7 @@ import { ArticleCardProps } from "interfaces/article";
 const ArticleCard = ({
     id,
     title,
-    location,
+    // location,
     price,
     photo,
 }: ArticleCardProps) => {
@@ -54,16 +54,16 @@ const ArticleCard = ({
                         {title}
                     </Typography>
                     <Stack direction="row" gap={0.5} alignItems="flex-start">
-                        <Place
+                        {/* <Place
                             sx={{
                                 fontSize: 18,
                                 color: "#11142d",
                                 marginTop: 0.5,
                             }}
-                        />
-                        <Typography fontSize={14} color="#808191">
+                        /> */}
+                        {/* <Typography fontSize={14} color="#808191">
                             {location}
-                        </Typography>
+                        </Typography> */}
                     </Stack>
                 </Stack>
                 <Box
@@ -74,7 +74,7 @@ const ArticleCard = ({
     height="fit-content"
 >
     <Typography fontSize={12} fontWeight={600} color="#475be8">
-        ${price}
+        rating {price}
     </Typography>
 </Box>
             </CardContent>

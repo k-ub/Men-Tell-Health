@@ -13,9 +13,10 @@ import {
     AccountCircleOutlined,
     ChatBubbleOutline,
     PeopleAltOutlined,
-    VillaOutlined,
     StarOutlineRounded
 } from "@mui/icons-material";
+import ArticleIcon from '@mui/icons-material/Article';
+import PlaceIcon from '@mui/icons-material/Place';
 
 import dataProvider from "@refinedev/simple-rest";
 import routerProvider from "@refinedev/react-router-v6/legacy";
@@ -151,7 +152,7 @@ function App() {
                             show: ArticleDetails,
                             create: CreateArticle,
                             edit: EditArticle,
-                            icon: <VillaOutlined />,
+                            icon: <ArticleIcon />,
                         },
                         {
                             name: "agents",
@@ -162,7 +163,7 @@ function App() {
                         {
                             name: "events",
                             list: CreateEvent,
-                            icon: <StarOutlineRounded />,
+                            icon: <PlaceIcon />,
                         },
                         {
                             name: "groupchats",
